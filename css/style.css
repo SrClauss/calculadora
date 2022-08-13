@@ -9,6 +9,7 @@
   border-style:solid;
   border-radius: 10px;
   box-shadow: 20px 20px 20px;
+  padding-bottom: 2vw;
   
 
 
@@ -18,23 +19,37 @@
   font-size: 2vw;
   font-weight: bolder;
 }
-.visor{
-  font-family: digital;
+.status{
   font-size: 2vw;
-  background-color: rgb(26, 26, 26);
-  color: aliceblue;
-  width: 35vw;
-  border: 5px rgb(199, 199, 199);
-  border-style:inset;
-  border-radius: 5px;
-  text-align: end;
-  
-
+  margin-bottom: -1.5vw;
 }
+.value-visor{
+  margin-top: -1.5vw;
+  margin-bottom: -1.5vw;
+}
+
+
+.visor{
+  background-color: black;
+  color: white;
+  font-family: digital;
+  font-size: 5vw;
+  width: 36vw;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10px;
+  border: 10px grey;
+  border-style: inset;
+  padding-left: 2vw;
+  padding-right: 1vw;
+
+  
+}
+
 .image-solar{
   width: 10vw;
 }
-.botao{
+.keyboard{
   width: 6vw;
   height: 6vw;
   font-size: 3vw;
@@ -48,6 +63,6 @@
   cursor: pointer;
 
 }
-.botao:active{
+.keyboard:active{
   border:inset 2px grey;
 }
