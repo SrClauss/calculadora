@@ -1,16 +1,19 @@
 var state = {
-
   string_value: '',
   value: 0.0,
   last_value:0.0,
   memory:0.0,
   operation:'',
-  last_key:''
+  last_key:'',
+  last_value2:0.0
+  }
+
   
-}
+
 start()
 
 function start(){
+ 
   
   
   renderDisplay()
@@ -63,13 +66,30 @@ function handleKeyboard(event){
   if(numbers.includes(v)){
     state.string_value+=v
     state.value = Number(state.string_value)
+    state.last_key = v
     
   }
-  if(basic_operations.includes(v)){
-   
-    
-    
+  if (basic_operations.includes(v)){
+    if (basic_operations.includes(state.last_key)){
+      state.operation = v
+    }
+    else{
+      
+    state.string_value = ''
+    state.value = doOperation()
+    console.log('value = '+ state.value)
+    state.last_value2 = state.last_value2
+    state.last_value = state.value
+    console.log('last = '+ state.last_value)
+    state.operation = v
+    console.log(state.operation)
+    }
   }
+
+
+    
+    
+  
   
   switch(v){
     
@@ -103,6 +123,20 @@ function handleKeyboard(event){
 
     case('\u221A'):
     state.value = Math.sqrt(state.value)
+    break
+
+    case('='):
+    state.value = doOperation()
+    clearValueString()
+    state.last_value = 0.0
+    break
+
+    case('CE'):
+    state.last_value = state.last_value2
+    console.log(state.last_value)
+    state.last_value2 = 0.0
+    state.operation = ''
+    state.value = 0.0
     
     
 
@@ -113,36 +147,25 @@ function handleKeyboard(event){
   renderDisplay()
   state.last_key = v
   
-  
+} 
 
 
-}
+
 function clearValueString(){
   state.string_value = ''
 
 }
-function doOperation(operation){
-
-  switch (operation){
+function doOperation(){
+  switch(state.operation){
     case('+'):
-    state.result = state.last_value  + state.value
-    break
-  
+    return state.last_value + state.value
     case('-'):
-    state.result = state.last_value - value
-    break
-
+    return state.last_value - state.value
     case('x'):
-    state.result = state.last_value * state.value
-    break
-
+    return state.last_value * state.value
     case('\u00f7'):
-    state.result = state.last_value/state.value
-    break
-    
+    return state.last_value / state.value
+    default:
+      return state.value
   }
-  
-
-
-
 }
